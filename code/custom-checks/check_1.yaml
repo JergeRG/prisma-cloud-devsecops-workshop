@@ -1,0 +1,18 @@
+metadata:
+  # Name and ID for the policy
+  name: "Ensure all resources have the 'Environment' tag"
+  id: "CKV2_TF_2"
+  category: "GENERAL_SECURITY"
+
+definition:
+  # The condition logic starts here
+  and:
+    - condition:
+        # Ensure the 'tags' attribute exists
+        key: "tags"
+        operator: exists
+    - condition:
+        # Ensure the 'Environment' tag exists within the tags
+        key: "tags.Environment"
+        operator: exists
+
